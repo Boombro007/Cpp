@@ -52,11 +52,27 @@ int main()
             k++; 
         }
     }
-    
+
+    for(i = 0; i < k; i++)
+    {
+        for(j = i + 1; j < k; j++)
+        {
+            if(p3[i].expo == p3[j].expo)
+            {
+                p3[i].coef += p3[j].coef;
+                for(int x = j; x < k - 1; x++)
+                    p3[x] = p3[x + 1];
+                k--;
+                j--;
+            }
+        }
+    }
+
     for(int m=0; m<k; m++)
     {
         cout<<p3[m].coef<<"x^"<<p3[m].expo;
         if(m < k - 1) cout<<" + "; // Makes the output cleaner
     }
+    
     return 0;
 }
